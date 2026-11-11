@@ -1,0 +1,10 @@
+.env
+.env.*
+*.pyc
+__pycache__/
+*.apk
+*.aab
+cloudflared.exe
+mobile/node_modules/
+mobile/.expo/
+node_modules/

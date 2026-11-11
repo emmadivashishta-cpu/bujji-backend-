@@ -1,0 +1,1593 @@
+{
+  "profile": {
+    "user_name": "Vashi",
+    "city": "Hyderabad",
+    "emergency_contact": "+919100098958"
+  },
+  "contacts": [
+    {
+      "id": "c1",
+      "name": "Vijay Frnd",
+      "relation": "Brother / Friend",
+      "phone": "+919381887566",
+      "aliases": [
+        "vijay",
+        "vijju",
+        "brother",
+        "anna",
+        "tammudu",
+        "vijay frnd"
+      ]
+    },
+    {
+      "id": "c2",
+      "name": "Amma",
+      "relation": "Mother",
+      "phone": "+918978356356",
+      "aliases": [
+        "amma",
+        "mom",
+        "mother",
+        "mummy"
+      ]
+    },
+    {
+      "id": "c3",
+      "name": "Ananya",
+      "relation": "Daughter",
+      "phone": "",
+      "aliases": [
+        "ananya",
+        "daughter",
+        "ammayi",
+        "papa"
+      ]
+    },
+    {
+      "id": "c4",
+      "name": "Dr. Sharma",
+      "relation": "Doctor",
+      "phone": "",
+      "aliases": [
+        "doctor",
+        "dr sharma",
+        "sharma",
+        "clinic",
+        "hospital"
+      ]
+    },
+    {
+      "id": "c5",
+      "name": "Ravi",
+      "relation": "Son",
+      "phone": "",
+      "aliases": [
+        "ravi",
+        "son",
+        "abbayi",
+        "koduku"
+      ]
+    },
+    {
+      "id": "bulk_6",
+      "name": "Kavitha",
+      "relation": "Contact",
+      "phone": "",
+      "aliases": [
+        "kavitha"
+      ]
+    },
+    {
+      "id": "bulk_7",
+      "name": "Suresh Anna",
+      "relation": "Contact",
+      "phone": "",
+      "aliases": [
+        "suresh anna"
+      ]
+    },
+    {
+      "id": "bulk_8",
+      "name": "Shanthi Kumar Kumar Niat",
+      "relation": "Contact",
+      "phone": "+917658910035",
+      "aliases": [
+        "shanthi kumar kumar niat"
+      ]
+    },
+    {
+      "id": "bulk_9",
+      "name": "Jeshwanth",
+      "relation": "Contact",
+      "phone": "+917013234768",
+      "aliases": [
+        "jeshwanth"
+      ]
+    },
+    {
+      "id": "bulk_10",
+      "name": "Rahman Niat",
+      "relation": "Contact",
+      "phone": "+919121233318",
+      "aliases": [
+        "rahman niat"
+      ]
+    },
+    {
+      "id": "bulk_11",
+      "name": "Niat Success Coach",
+      "relation": "Contact",
+      "phone": "+919281411951",
+      "aliases": [
+        "niat success coach"
+      ]
+    },
+    {
+      "id": "bulk_12",
+      "name": "Chukka",
+      "relation": "Contact",
+      "phone": "+919347742002",
+      "aliases": [
+        "chukka"
+      ]
+    },
+    {
+      "id": "bulk_13",
+      "name": "Shaid",
+      "relation": "Contact",
+      "phone": "+919704990957",
+      "aliases": [
+        "shaid"
+      ]
+    },
+    {
+      "id": "bulk_14",
+      "name": "Sampath Anna Smart",
+      "relation": "Contact",
+      "phone": "+917730935854",
+      "aliases": [
+        "sampath anna smart"
+      ]
+    },
+    {
+      "id": "bulk_15",
+      "name": "Nanna",
+      "relation": "Contact",
+      "phone": "+919000989585",
+      "aliases": [
+        "nanna"
+      ]
+    },
+    {
+      "id": "bulk_16",
+      "name": "Mani Srm⚡",
+      "relation": "Contact",
+      "phone": "+917207138410",
+      "aliases": [
+        "mani srm⚡"
+      ]
+    },
+    {
+      "id": "bulk_17",
+      "name": "Sairam",
+      "relation": "Contact",
+      "phone": "+919515671554",
+      "aliases": [
+        "sairam"
+      ]
+    },
+    {
+      "id": "bulk_18",
+      "name": "Siddu Mx",
+      "relation": "Contact",
+      "phone": "+918143900767",
+      "aliases": [
+        "siddu mx"
+      ]
+    },
+    {
+      "id": "bulk_19",
+      "name": "Sahu",
+      "relation": "Contact",
+      "phone": "+919861706984",
+      "aliases": [
+        "sahu"
+      ]
+    },
+    {
+      "id": "bulk_20",
+      "name": "Anna💪",
+      "relation": "Contact",
+      "phone": "+916301668559",
+      "aliases": [
+        "anna💪"
+      ]
+    },
+    {
+      "id": "bulk_21",
+      "name": "Bhargav Anna Canara Bank",
+      "relation": "Contact",
+      "phone": "+919618522317",
+      "aliases": [
+        "bhargav anna canara bank"
+      ]
+    },
+    {
+      "id": "bulk_22",
+      "name": "Sahith Annaya",
+      "relation": "Contact",
+      "phone": "+918317687848",
+      "aliases": [
+        "sahith annaya"
+      ]
+    },
+    {
+      "id": "bulk_23",
+      "name": "Arya",
+      "relation": "Contact",
+      "phone": "+916305441178",
+      "aliases": [
+        "arya"
+      ]
+    },
+    {
+      "id": "bulk_24",
+      "name": "Vinay Narasimhula",
+      "relation": "Contact",
+      "phone": "+918688096012",
+      "aliases": [
+        "vinay narasimhula"
+      ]
+    },
+    {
+      "id": "bulk_25",
+      "name": "Tejaswini Mam Niat",
+      "relation": "Contact",
+      "phone": "+919281409060",
+      "aliases": [
+        "tejaswini mam niat"
+      ]
+    },
+    {
+      "id": "bulk_26",
+      "name": "Ramcharan Niat",
+      "relation": "Contact",
+      "phone": "+917013860544",
+      "aliases": [
+        "ramcharan niat"
+      ]
+    },
+    {
+      "id": "bulk_27",
+      "name": "Akhil Niat",
+      "relation": "Contact",
+      "phone": "+919182362344",
+      "aliases": [
+        "akhil niat"
+      ]
+    },
+    {
+      "id": "bulk_28",
+      "name": "Harshith Ram Niat",
+      "relation": "Contact",
+      "phone": "+919347622981",
+      "aliases": [
+        "harshith ram niat"
+      ]
+    },
+    {
+      "id": "bulk_29",
+      "name": "Uday Sandeep",
+      "relation": "Contact",
+      "phone": "+918919045843",
+      "aliases": [
+        "uday sandeep"
+      ]
+    },
+    {
+      "id": "bulk_30",
+      "name": "Uday Venu NIAT",
+      "relation": "Contact",
+      "phone": "+918688098603",
+      "aliases": [
+        "uday venu niat"
+      ]
+    },
+    {
+      "id": "bulk_31",
+      "name": "Food N Drinks",
+      "relation": "Contact",
+      "phone": "+919121666302",
+      "aliases": [
+        "food n drinks"
+      ]
+    },
+    {
+      "id": "bulk_32",
+      "name": "Manuu bhAA!!!!!!!💙💎",
+      "relation": "Contact",
+      "phone": "+918179610833",
+      "aliases": [
+        "manuu bhaa!!!!!!!💙💎"
+      ]
+    },
+    {
+      "id": "bulk_33",
+      "name": "Pradeep Ig",
+      "relation": "Contact",
+      "phone": "+919100969697",
+      "aliases": [
+        "pradeep ig"
+      ]
+    },
+    {
+      "id": "bulk_34",
+      "name": "Nithin Srm",
+      "relation": "Contact",
+      "phone": "+918125921935",
+      "aliases": [
+        "nithin srm"
+      ]
+    },
+    {
+      "id": "bulk_35",
+      "name": "COMPUTER 🖥️",
+      "relation": "Contact",
+      "phone": "+916302656725",
+      "aliases": [
+        "computer 🖥️"
+      ]
+    },
+    {
+      "id": "bulk_36",
+      "name": "San Hotel Niat",
+      "relation": "Contact",
+      "phone": "+919398148658",
+      "aliases": [
+        "san hotel niat"
+      ]
+    },
+    {
+      "id": "bulk_37",
+      "name": "Mukram Niat",
+      "relation": "Contact",
+      "phone": "+918977514466",
+      "aliases": [
+        "mukram niat"
+      ]
+    },
+    {
+      "id": "bulk_38",
+      "name": "Raghavendra Niat",
+      "relation": "Contact",
+      "phone": "+918309100956",
+      "aliases": [
+        "raghavendra niat"
+      ]
+    },
+    {
+      "id": "bulk_39",
+      "name": "Teja Drlng. 🤍💎",
+      "relation": "Contact",
+      "phone": "+917815920382",
+      "aliases": [
+        "teja drlng. 🤍💎"
+      ]
+    },
+    {
+      "id": "bulk_40",
+      "name": "Sowmya",
+      "relation": "Contact",
+      "phone": "+918688890961",
+      "aliases": [
+        "sowmya"
+      ]
+    },
+    {
+      "id": "bulk_41",
+      "name": "Mad At Max💢",
+      "relation": "Contact",
+      "phone": "+919553051317",
+      "aliases": [
+        "mad at max💢"
+      ]
+    },
+    {
+      "id": "bulk_42",
+      "name": "Vijay Anna",
+      "relation": "Contact",
+      "phone": "+918008225626",
+      "aliases": [
+        "vijay anna"
+      ]
+    },
+    {
+      "id": "bulk_43",
+      "name": "CEO Mawa⚡",
+      "relation": "Contact",
+      "phone": "+919177335507",
+      "aliases": [
+        "ceo mawa⚡"
+      ]
+    },
+    {
+      "id": "bulk_44",
+      "name": "Anil Sir Niat",
+      "relation": "Contact",
+      "phone": "+918885881231",
+      "aliases": [
+        "anil sir niat"
+      ]
+    },
+    {
+      "id": "bulk_45",
+      "name": "Swathi Pedhamma",
+      "relation": "Contact",
+      "phone": "+919985928960",
+      "aliases": [
+        "swathi pedhamma"
+      ]
+    },
+    {
+      "id": "bulk_46",
+      "name": "Prashanth Mawa",
+      "relation": "Contact",
+      "phone": "+919666356655",
+      "aliases": [
+        "prashanth mawa"
+      ]
+    },
+    {
+      "id": "bulk_47",
+      "name": "Anu Electronics",
+      "relation": "Contact",
+      "phone": "+919177373225",
+      "aliases": [
+        "anu electronics"
+      ]
+    },
+    {
+      "id": "bulk_48",
+      "name": "Akhil Bro",
+      "relation": "Contact",
+      "phone": "+919032145908",
+      "aliases": [
+        "akhil bro"
+      ]
+    },
+    {
+      "id": "bulk_49",
+      "name": "Jagadesh Anna",
+      "relation": "Contact",
+      "phone": "+917842377028",
+      "aliases": [
+        "jagadesh anna"
+      ]
+    },
+    {
+      "id": "bulk_50",
+      "name": "Kumar Anna",
+      "relation": "Contact",
+      "phone": "+919347270617",
+      "aliases": [
+        "kumar anna"
+      ]
+    },
+    {
+      "id": "bulk_51",
+      "name": "Uday",
+      "relation": "Contact",
+      "phone": "+917569278726",
+      "aliases": [
+        "uday"
+      ]
+    },
+    {
+      "id": "bulk_52",
+      "name": "Shiva Rama Krishna Ayyagaru",
+      "relation": "Contact",
+      "phone": "+919885271166",
+      "aliases": [
+        "shiva rama krishna ayyagaru"
+      ]
+    },
+    {
+      "id": "bulk_53",
+      "name": "Surya Ig",
+      "relation": "Contact",
+      "phone": "+919703036363",
+      "aliases": [
+        "surya ig"
+      ]
+    },
+    {
+      "id": "bulk_54",
+      "name": "Pujith Ig",
+      "relation": "Contact",
+      "phone": "+916301172442",
+      "aliases": [
+        "pujith ig"
+      ]
+    },
+    {
+      "id": "bulk_55",
+      "name": "Nanamma👣✨",
+      "relation": "Contact",
+      "phone": "+919704909034",
+      "aliases": [
+        "nanamma👣✨"
+      ]
+    },
+    {
+      "id": "bulk_56",
+      "name": "Kutlu🧃",
+      "relation": "Contact",
+      "phone": "+917330886015",
+      "aliases": [
+        "kutlu🧃"
+      ]
+    },
+    {
+      "id": "bulk_57",
+      "name": "Nandu Srm⚡",
+      "relation": "Contact",
+      "phone": "+916305430118",
+      "aliases": [
+        "nandu srm⚡"
+      ]
+    },
+    {
+      "id": "bulk_58",
+      "name": "Sanketh Bhai Ig⚡",
+      "relation": "Contact",
+      "phone": "+919492412291",
+      "aliases": [
+        "sanketh bhai ig⚡"
+      ]
+    },
+    {
+      "id": "bulk_59",
+      "name": "Nithin Ig⚡",
+      "relation": "Contact",
+      "phone": "+917893541201",
+      "aliases": [
+        "nithin ig⚡"
+      ]
+    },
+    {
+      "id": "bulk_60",
+      "name": "Likith Ig⚡",
+      "relation": "Contact",
+      "phone": "+918985520115",
+      "aliases": [
+        "likith ig⚡"
+      ]
+    },
+    {
+      "id": "bulk_61",
+      "name": "Chandu 🫂🥀",
+      "relation": "Contact",
+      "phone": "+917075876211",
+      "aliases": [
+        "chandu 🫂🥀"
+      ]
+    },
+    {
+      "id": "bulk_62",
+      "name": "Bobby",
+      "relation": "Contact",
+      "phone": "+919885897160",
+      "aliases": [
+        "bobby"
+      ]
+    },
+    {
+      "id": "bulk_63",
+      "name": "Manoj Vikarabad",
+      "relation": "Contact",
+      "phone": "+916301073249",
+      "aliases": [
+        "manoj vikarabad"
+      ]
+    },
+    {
+      "id": "bulk_64",
+      "name": "Chakradhar Niat",
+      "relation": "Contact",
+      "phone": "+917995005850",
+      "aliases": [
+        "chakradhar niat"
+      ]
+    },
+    {
+      "id": "bulk_65",
+      "name": "Hrishikesh Niat",
+      "relation": "Contact",
+      "phone": "+917780233313",
+      "aliases": [
+        "hrishikesh niat"
+      ]
+    },
+    {
+      "id": "bulk_66",
+      "name": "Rishith Ig ⚡",
+      "relation": "Contact",
+      "phone": "+917671893848",
+      "aliases": [
+        "rishith ig ⚡"
+      ]
+    },
+    {
+      "id": "bulk_67",
+      "name": "Flipkart Money Issue",
+      "relation": "Contact",
+      "phone": "+919347585381",
+      "aliases": [
+        "flipkart money issue"
+      ]
+    },
+    {
+      "id": "bulk_68",
+      "name": "Uday Niat",
+      "relation": "Contact",
+      "phone": "+918519906965",
+      "aliases": [
+        "uday niat"
+      ]
+    },
+    {
+      "id": "bulk_69",
+      "name": "Srithan Niat Gym",
+      "relation": "Contact",
+      "phone": "+919701189752",
+      "aliases": [
+        "srithan niat gym"
+      ]
+    },
+    {
+      "id": "bulk_70",
+      "name": "Satish",
+      "relation": "Contact",
+      "phone": "+917893305534",
+      "aliases": [
+        "satish"
+      ]
+    },
+    {
+      "id": "bulk_71",
+      "name": "Bits Id 2025eb02010: +0",
+      "relation": "Contact",
+      "phone": "+919120250201",
+      "aliases": [
+        "bits id 2025eb02010: +0"
+      ]
+    },
+    {
+      "id": "bulk_72",
+      "name": "Jeshwanth Chary Niat",
+      "relation": "Contact",
+      "phone": "+917093614890",
+      "aliases": [
+        "jeshwanth chary niat"
+      ]
+    },
+    {
+      "id": "bulk_73",
+      "name": "Dinosaur 🦖",
+      "relation": "Contact",
+      "phone": "+919515132593",
+      "aliases": [
+        "dinosaur 🦖"
+      ]
+    },
+    {
+      "id": "bulk_74",
+      "name": "Dheeraj Niat Aurora",
+      "relation": "Contact",
+      "phone": "+919059106629",
+      "aliases": [
+        "dheeraj niat aurora"
+      ]
+    },
+    {
+      "id": "bulk_75",
+      "name": "Royal Food Court",
+      "relation": "Contact",
+      "phone": "+919502587480",
+      "aliases": [
+        "royal food court"
+      ]
+    },
+    {
+      "id": "bulk_76",
+      "name": "Saiτejα 🎀💙💎",
+      "relation": "Contact",
+      "phone": "+918885283048",
+      "aliases": [
+        "saiτejα 🎀💙💎"
+      ]
+    },
+    {
+      "id": "bulk_77",
+      "name": "Shiva Niat❤️‍🩹",
+      "relation": "Contact",
+      "phone": "+919381634929",
+      "aliases": [
+        "shiva niat❤️‍🩹"
+      ]
+    },
+    {
+      "id": "bulk_78",
+      "name": "Sai Charan Niat Wrngl",
+      "relation": "Contact",
+      "phone": "+917893069965",
+      "aliases": [
+        "sai charan niat wrngl"
+      ]
+    },
+    {
+      "id": "bulk_79",
+      "name": "Mallesh Anna Chandipa",
+      "relation": "Contact",
+      "phone": "+917729098083",
+      "aliases": [
+        "mallesh anna chandipa"
+      ]
+    },
+    {
+      "id": "bulk_80",
+      "name": "Rikki Niat",
+      "relation": "Contact",
+      "phone": "+918790295932",
+      "aliases": [
+        "rikki niat"
+      ]
+    },
+    {
+      "id": "bulk_81",
+      "name": "Venkat Sai Srm",
+      "relation": "Contact",
+      "phone": "+919502351895",
+      "aliases": [
+        "venkat sai srm"
+      ]
+    },
+    {
+      "id": "bulk_82",
+      "name": "navya srm",
+      "relation": "Contact",
+      "phone": "+919989581524",
+      "aliases": [
+        "navya srm"
+      ]
+    },
+    {
+      "id": "bulk_83",
+      "name": "Aravind",
+      "relation": "Contact",
+      "phone": "+919052779412",
+      "aliases": [
+        "aravind"
+      ]
+    },
+    {
+      "id": "bulk_84",
+      "name": "Madhav SRM❤️‍🩹",
+      "relation": "Contact",
+      "phone": "+919398905052",
+      "aliases": [
+        "madhav srm❤️‍🩹"
+      ]
+    },
+    {
+      "id": "bulk_85",
+      "name": "Sandeep Srm⚡",
+      "relation": "Contact",
+      "phone": "+916305417827",
+      "aliases": [
+        "sandeep srm⚡"
+      ]
+    },
+    {
+      "id": "bulk_86",
+      "name": "Anirudh Ig⚡",
+      "relation": "Contact",
+      "phone": "+918309029909",
+      "aliases": [
+        "anirudh ig⚡"
+      ]
+    },
+    {
+      "id": "bulk_87",
+      "name": "Vathsal Niat",
+      "relation": "Contact",
+      "phone": "+916304058886",
+      "aliases": [
+        "vathsal niat"
+      ]
+    },
+    {
+      "id": "bulk_88",
+      "name": "Teju Akka",
+      "relation": "Contact",
+      "phone": "+918008463436",
+      "aliases": [
+        "teju akka"
+      ]
+    },
+    {
+      "id": "bulk_89",
+      "name": "Krishna Mama❤️‍🔥❤️‍🔥",
+      "relation": "Contact",
+      "phone": "+919704174655",
+      "aliases": [
+        "krishna mama❤️‍🔥❤️‍🔥"
+      ]
+    },
+    {
+      "id": "bulk_90",
+      "name": "Ajay Yt Ff",
+      "relation": "Contact",
+      "phone": "+919100856315",
+      "aliases": [
+        "ajay yt ff"
+      ]
+    },
+    {
+      "id": "bulk_91",
+      "name": "Sandeep Anna Anna Australia: +9",
+      "relation": "Contact",
+      "phone": "+916143219428",
+      "aliases": [
+        "sandeep anna anna australia: +9"
+      ]
+    },
+    {
+      "id": "bulk_92",
+      "name": "Chaitanya Sir Kukatpally",
+      "relation": "Contact",
+      "phone": "+918341517161",
+      "aliases": [
+        "chaitanya sir kukatpally"
+      ]
+    },
+    {
+      "id": "bulk_93",
+      "name": "Raghu Niat",
+      "relation": "Contact",
+      "phone": "+917337354625",
+      "aliases": [
+        "raghu niat"
+      ]
+    },
+    {
+      "id": "bulk_94",
+      "name": "Cement Mettu",
+      "relation": "Contact",
+      "phone": "+918008477703",
+      "aliases": [
+        "cement mettu"
+      ]
+    },
+    {
+      "id": "bulk_95",
+      "name": "Sudhakar Wines",
+      "relation": "Contact",
+      "phone": "+917674006416",
+      "aliases": [
+        "sudhakar wines"
+      ]
+    },
+    {
+      "id": "bulk_96",
+      "name": "Bakkodu 🤸",
+      "relation": "Contact",
+      "phone": "+916300266469",
+      "aliases": [
+        "bakkodu 🤸"
+      ]
+    },
+    {
+      "id": "bulk_97",
+      "name": "Ganesh Jaan❤️‍🩹",
+      "relation": "Contact",
+      "phone": "+918688760175",
+      "aliases": [
+        "ganesh jaan❤️‍🩹"
+      ]
+    },
+    {
+      "id": "bulk_98",
+      "name": "Sharun Sai ❤️‍🩹",
+      "relation": "Contact",
+      "phone": "+918099106666",
+      "aliases": [
+        "sharun sai ❤️‍🩹"
+      ]
+    },
+    {
+      "id": "bulk_99",
+      "name": "Rajeshwari Mam Niat",
+      "relation": "Contact",
+      "phone": "+919281413974",
+      "aliases": [
+        "rajeshwari mam niat"
+      ]
+    },
+    {
+      "id": "bulk_100",
+      "name": "Uday Niat",
+      "relation": "Contact",
+      "phone": "+918977452995",
+      "aliases": [
+        "uday niat"
+      ]
+    },
+    {
+      "id": "bulk_101",
+      "name": "Shashi Srm",
+      "relation": "Contact",
+      "phone": "+919392048732",
+      "aliases": [
+        "shashi srm"
+      ]
+    },
+    {
+      "id": "bulk_102",
+      "name": "Duta Mani",
+      "relation": "Contact",
+      "phone": "+919391379301",
+      "aliases": [
+        "duta mani"
+      ]
+    },
+    {
+      "id": "bulk_103",
+      "name": "Srikanth 😌",
+      "relation": "Contact",
+      "phone": "+919618324640",
+      "aliases": [
+        "srikanth 😌"
+      ]
+    },
+    {
+      "id": "bulk_104",
+      "name": "Kaushik Nani 😌",
+      "relation": "Contact",
+      "phone": "+919381848795",
+      "aliases": [
+        "kaushik nani 😌"
+      ]
+    },
+    {
+      "id": "bulk_105",
+      "name": "Panduuu",
+      "relation": "Contact",
+      "phone": "+918125361274",
+      "aliases": [
+        "panduuu"
+      ]
+    },
+    {
+      "id": "bulk_106",
+      "name": "Bachiii",
+      "relation": "Contact",
+      "phone": "+919381449260",
+      "aliases": [
+        "bachiii"
+      ]
+    },
+    {
+      "id": "bulk_107",
+      "name": "Sanjay Np",
+      "relation": "Contact",
+      "phone": "+919959303846",
+      "aliases": [
+        "sanjay np"
+      ]
+    },
+    {
+      "id": "bulk_108",
+      "name": "Murali Np",
+      "relation": "Contact",
+      "phone": "+917207221803",
+      "aliases": [
+        "murali np"
+      ]
+    },
+    {
+      "id": "bulk_109",
+      "name": "Rohith Anna",
+      "relation": "Contact",
+      "phone": "+917095018074",
+      "aliases": [
+        "rohith anna"
+      ]
+    },
+    {
+      "id": "bulk_110",
+      "name": "Naveen Reddy Srm",
+      "relation": "Contact",
+      "phone": "+916304059117",
+      "aliases": [
+        "naveen reddy srm"
+      ]
+    },
+    {
+      "id": "bulk_111",
+      "name": "Potti Ajjii",
+      "relation": "Contact",
+      "phone": "+917207493413",
+      "aliases": [
+        "potti ajjii"
+      ]
+    },
+    {
+      "id": "bulk_112",
+      "name": "Shiva Thirumalagiri",
+      "relation": "Contact",
+      "phone": "+919346079239",
+      "aliases": [
+        "shiva thirumalagiri"
+      ]
+    },
+    {
+      "id": "bulk_113",
+      "name": "Pan Card",
+      "relation": "Contact",
+      "phone": "+917286963742",
+      "aliases": [
+        "pan card"
+      ]
+    },
+    {
+      "id": "bulk_114",
+      "name": "A1 Mobiles Ramesh",
+      "relation": "Contact",
+      "phone": "+917287891382",
+      "aliases": [
+        "a1 mobiles ramesh"
+      ]
+    },
+    {
+      "id": "bulk_115",
+      "name": "Sri Nandhan Ig",
+      "relation": "Contact",
+      "phone": "+917794879754",
+      "aliases": [
+        "sri nandhan ig"
+      ]
+    },
+    {
+      "id": "bulk_116",
+      "name": "Venkat Ram Ig",
+      "relation": "Contact",
+      "phone": "+917815964367",
+      "aliases": [
+        "venkat ram ig"
+      ]
+    },
+    {
+      "id": "bulk_117",
+      "name": "Abhilash Bro Gym",
+      "relation": "Contact",
+      "phone": "+916305154915",
+      "aliases": [
+        "abhilash bro gym"
+      ]
+    },
+    {
+      "id": "bulk_118",
+      "name": "Charan Chakki Bava",
+      "relation": "Contact",
+      "phone": "+919014996929",
+      "aliases": [
+        "charan chakki bava"
+      ]
+    },
+    {
+      "id": "bulk_119",
+      "name": "Hanumanth Rao Sir Ig",
+      "relation": "Contact",
+      "phone": "+919160259468",
+      "aliases": [
+        "hanumanth rao sir ig"
+      ]
+    },
+    {
+      "id": "bulk_120",
+      "name": "Rikith Niat",
+      "relation": "Contact",
+      "phone": "+919014629281",
+      "aliases": [
+        "rikith niat"
+      ]
+    },
+    {
+      "id": "bulk_121",
+      "name": "DAMU 😌",
+      "relation": "Contact",
+      "phone": "+917569466123",
+      "aliases": [
+        "damu 😌"
+      ]
+    },
+    {
+      "id": "bulk_122",
+      "name": "Amir Niat",
+      "relation": "Contact",
+      "phone": "+917330709656",
+      "aliases": [
+        "amir niat"
+      ]
+    },
+    {
+      "id": "bulk_123",
+      "name": "Hard uh",
+      "relation": "Contact",
+      "phone": "+919666932329",
+      "aliases": [
+        "hard uh"
+      ]
+    },
+    {
+      "id": "bulk_124",
+      "name": "Santosh Niat",
+      "relation": "Contact",
+      "phone": "+919381040778",
+      "aliases": [
+        "santosh niat"
+      ]
+    },
+    {
+      "id": "bulk_125",
+      "name": "Sameer",
+      "relation": "Contact",
+      "phone": "+918096179142",
+      "aliases": [
+        "sameer"
+      ]
+    },
+    {
+      "id": "bulk_126",
+      "name": "Addmission Team",
+      "relation": "Contact",
+      "phone": "+917989923042",
+      "aliases": [
+        "addmission team"
+      ]
+    },
+    {
+      "id": "bulk_127",
+      "name": "Chintu Bava🤍",
+      "relation": "Contact",
+      "phone": "+917702902812",
+      "aliases": [
+        "chintu bava🤍"
+      ]
+    },
+    {
+      "id": "bulk_128",
+      "name": "Karthik Mama",
+      "relation": "Contact",
+      "phone": "+918142583078",
+      "aliases": [
+        "karthik mama"
+      ]
+    },
+    {
+      "id": "bulk_129",
+      "name": "Chikku Bava 🕊️❤️‍🩹",
+      "relation": "Contact",
+      "phone": "+919676357033",
+      "aliases": [
+        "chikku bava 🕊️❤️‍🩹"
+      ]
+    },
+    {
+      "id": "bulk_130",
+      "name": "Abhi Thonda Akshara",
+      "relation": "Contact",
+      "phone": "+917207225248",
+      "aliases": [
+        "abhi thonda akshara"
+      ]
+    },
+    {
+      "id": "bulk_131",
+      "name": "Harshini Mam Niat",
+      "relation": "Contact",
+      "phone": "+918498917528",
+      "aliases": [
+        "harshini mam niat"
+      ]
+    },
+    {
+      "id": "bulk_132",
+      "name": "Js Computer 🖥️",
+      "relation": "Contact",
+      "phone": "+919966868916",
+      "aliases": [
+        "js computer 🖥️"
+      ]
+    },
+    {
+      "id": "bulk_133",
+      "name": "Hemanth Np",
+      "relation": "Contact",
+      "phone": "+918790911852",
+      "aliases": [
+        "hemanth np"
+      ]
+    },
+    {
+      "id": "bulk_134",
+      "name": "Ramu Anna Iron",
+      "relation": "Contact",
+      "phone": "+919959494332",
+      "aliases": [
+        "ramu anna iron"
+      ]
+    },
+    {
+      "id": "bulk_135",
+      "name": "Mahesh Uncle",
+      "relation": "Contact",
+      "phone": "+919603713901",
+      "aliases": [
+        "mahesh uncle"
+      ]
+    },
+    {
+      "id": "bulk_136",
+      "name": "Pandu Naveen",
+      "relation": "Contact",
+      "phone": "+918522845699",
+      "aliases": [
+        "pandu naveen"
+      ]
+    },
+    {
+      "id": "bulk_137",
+      "name": "Kailash",
+      "relation": "Contact",
+      "phone": "+919000579363",
+      "aliases": [
+        "kailash"
+      ]
+    },
+    {
+      "id": "bulk_138",
+      "name": "Kailash 2",
+      "relation": "Contact",
+      "phone": "+919398155174",
+      "aliases": [
+        "kailash 2"
+      ]
+    },
+    {
+      "id": "bulk_139",
+      "name": "Gagan Niat",
+      "relation": "Contact",
+      "phone": "+919177299112",
+      "aliases": [
+        "gagan niat"
+      ]
+    },
+    {
+      "id": "bulk_140",
+      "name": "Vamshi anna ig",
+      "relation": "Contact",
+      "phone": "+919121232799",
+      "aliases": [
+        "vamshi anna ig"
+      ]
+    },
+    {
+      "id": "bulk_141",
+      "name": "Canara Sir",
+      "relation": "Contact",
+      "phone": "+918353984141",
+      "aliases": [
+        "canara sir"
+      ]
+    },
+    {
+      "id": "bulk_142",
+      "name": "Somesh Babai Mothkur",
+      "relation": "Contact",
+      "phone": "+919885284904",
+      "aliases": [
+        "somesh babai mothkur"
+      ]
+    },
+    {
+      "id": "bulk_143",
+      "name": "Key",
+      "relation": "Contact",
+      "phone": "+919948552381",
+      "aliases": [
+        "key"
+      ]
+    },
+    {
+      "id": "bulk_144",
+      "name": "Rithvikkkk",
+      "relation": "Contact",
+      "phone": "+918374050639",
+      "aliases": [
+        "rithvikkkk"
+      ]
+    },
+    {
+      "id": "bulk_145",
+      "name": "Ammulu Akka",
+      "relation": "Contact",
+      "phone": "+917661970326",
+      "aliases": [
+        "ammulu akka"
+      ]
+    },
+    {
+      "id": "bulk_146",
+      "name": "Croma",
+      "relation": "Contact",
+      "phone": "+917993767559",
+      "aliases": [
+        "croma"
+      ]
+    },
+    {
+      "id": "bulk_147",
+      "name": "Bharath Anna",
+      "relation": "Contact",
+      "phone": "+919392479017",
+      "aliases": [
+        "bharath anna"
+      ]
+    },
+    {
+      "id": "bulk_148",
+      "name": "Natraj Supermarket Sampanth Uncle",
+      "relation": "Contact",
+      "phone": "+919000296989",
+      "aliases": [
+        "natraj supermarket sampanth uncle"
+      ]
+    },
+    {
+      "id": "bulk_149",
+      "name": "Venu Srm",
+      "relation": "Contact",
+      "phone": "+918919935930",
+      "aliases": [
+        "venu srm"
+      ]
+    },
+    {
+      "id": "bulk_150",
+      "name": "Madhava Bro Tirupati",
+      "relation": "Contact",
+      "phone": "+917396026710",
+      "aliases": [
+        "madhava bro tirupati"
+      ]
+    },
+    {
+      "id": "bulk_151",
+      "name": "Ganesh Snist",
+      "relation": "Contact",
+      "phone": "+919640500913",
+      "aliases": [
+        "ganesh snist"
+      ]
+    },
+    {
+      "id": "bulk_152",
+      "name": "Vashi",
+      "relation": "Contact",
+      "phone": "+919100098958",
+      "aliases": [
+        "vashi"
+      ]
+    },
+    {
+      "id": "bulk_153",
+      "name": "Gopi Anna",
+      "relation": "Contact",
+      "phone": "+919652775590",
+      "aliases": [
+        "gopi anna"
+      ]
+    },
+    {
+      "id": "bulk_154",
+      "name": "Blue Pink Pg",
+      "relation": "Contact",
+      "phone": "+917386478867",
+      "aliases": [
+        "blue pink pg"
+      ]
+    },
+    {
+      "id": "bulk_155",
+      "name": "Keerthan",
+      "relation": "Contact",
+      "phone": "+918885414524",
+      "aliases": [
+        "keerthan"
+      ]
+    },
+    {
+      "id": "bulk_156",
+      "name": "Venkanna Uncle Rto Office",
+      "relation": "Contact",
+      "phone": "+919885780727",
+      "aliases": [
+        "venkanna uncle rto office"
+      ]
+    },
+    {
+      "id": "bulk_157",
+      "name": "Abhi Anna Jkp",
+      "relation": "Contact",
+      "phone": "+919014181927",
+      "aliases": [
+        "abhi anna jkp"
+      ]
+    },
+    {
+      "id": "bulk_158",
+      "name": "Navaketh Ig",
+      "relation": "Contact",
+      "phone": "+919515263617",
+      "aliases": [
+        "navaketh ig"
+      ]
+    },
+    {
+      "id": "bulk_159",
+      "name": "Nandan Niat",
+      "relation": "Contact",
+      "phone": "+919959953304",
+      "aliases": [
+        "nandan niat"
+      ]
+    },
+    {
+      "id": "bulk_160",
+      "name": "David Anna Pg",
+      "relation": "Contact",
+      "phone": "+919014965491",
+      "aliases": [
+        "david anna pg"
+      ]
+    },
+    {
+      "id": "bulk_161",
+      "name": "JioCare Chat Support",
+      "relation": "Contact",
+      "phone": "+917000770007",
+      "aliases": [
+        "jiocare chat support"
+      ]
+    },
+    {
+      "id": "bulk_162",
+      "name": "Varun Ogli",
+      "relation": "Contact",
+      "phone": "+919381082029",
+      "aliases": [
+        "varun ogli"
+      ]
+    },
+    {
+      "id": "bulk_163",
+      "name": "Mani Bro Intensive Editor",
+      "relation": "Contact",
+      "phone": "+918106811439",
+      "aliases": [
+        "mani bro intensive editor"
+      ]
+    },
+    {
+      "id": "bulk_164",
+      "name": "5 fingers",
+      "relation": "Contact",
+      "phone": "+919059870356",
+      "aliases": [
+        "5 fingers"
+      ]
+    },
+    {
+      "id": "bulk_165",
+      "name": "Sandeep Anna T. Giri",
+      "relation": "Contact",
+      "phone": "+919032515020",
+      "aliases": [
+        "sandeep anna t. giri"
+      ]
+    },
+    {
+      "id": "bulk_166",
+      "name": "Akhil Room",
+      "relation": "Contact",
+      "phone": "+918328223009",
+      "aliases": [
+        "akhil room"
+      ]
+    },
+    {
+      "id": "bulk_167",
+      "name": "Pavan Narayaguda",
+      "relation": "Contact",
+      "phone": "+918919061513",
+      "aliases": [
+        "pavan narayaguda"
+      ]
+    },
+    {
+      "id": "bulk_168",
+      "name": "Sunshine Pg",
+      "relation": "Contact",
+      "phone": "+917337221554",
+      "aliases": [
+        "sunshine pg"
+      ]
+    },
+    {
+      "id": "bulk_169",
+      "name": "Ammamma🤍",
+      "relation": "Contact",
+      "phone": "+916300329862",
+      "aliases": [
+        "ammamma🤍"
+      ]
+    },
+    {
+      "id": "bulk_170",
+      "name": "Sridhar Ig",
+      "relation": "Contact",
+      "phone": "+917032463482",
+      "aliases": [
+        "sridhar ig"
+      ]
+    },
+    {
+      "id": "bulk_171",
+      "name": "Venkatesh",
+      "relation": "Contact",
+      "phone": "+917207037040",
+      "aliases": [
+        "venkatesh"
+      ]
+    },
+    {
+      "id": "bulk_172",
+      "name": "Dhana Akkaaa",
+      "relation": "Contact",
+      "phone": "+919959676322",
+      "aliases": [
+        "dhana akkaaa"
+      ]
+    },
+    {
+      "id": "bulk_173",
+      "name": "Deva Anna",
+      "relation": "Contact",
+      "phone": "+917075583816",
+      "aliases": [
+        "deva anna"
+      ]
+    },
+    {
+      "id": "bulk_174",
+      "name": "Equal AI Support: +16",
+      "relation": "Contact",
+      "phone": "+919111354030",
+      "aliases": [
+        "equal ai support: +16"
+      ]
+    }
+  ]
+}

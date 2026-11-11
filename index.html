@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F172A" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Bujji – Voice AI Mobile Companion</title>
+  
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%230EA5E9'/><text x='50' y='68' font-size='55' text-anchor='middle'>🎙️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+Telugu:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --bg-dark: #090D16;
+      --card-bg: #141E33;
+      --card-border: #223254;
+      --primary-blue: #0EA5E9;
+      --primary-glow: rgba(14, 165, 233, 0.45);
+      --emerald-green: #10B981;
+      --amber-yellow: #F59E0B;
+      --alert-red: #EF4444;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --bubble-user: linear-gradient(135deg, #0284C7, #2563EB);
+      --bubble-bujji: #1E293B;
+      --font-scale: 1rem;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Telugu', sans-serif;
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      overflow-x: hidden;
+    }
+
+    /* ── Responsive Mobile App Shell ── */
+    .app-container {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: radial-gradient(circle at top right, #1E1B4B 0%, #0F172A 40%, #090D16 100%);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    }
+
+    /* ── Elder-Friendly Top Header ── */
+    .app-header {
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #38BDF8, #6366F1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+    }
+
+    .brand-titles h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-titles p {
+      font-size: 0.74rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-btn {
+      border: none;
+      padding: 7px 11px;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 0.78rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .pill-btn:active { transform: scale(0.95); }
+
+    .lang-btn {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary-blue);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .contacts-btn {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald-green);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .sos-btn {
+      background: linear-gradient(135deg, #EF4444, #B91C1C);
+      color: #FFFFFF;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.5);
+      font-weight: 800;
+    }
+
+    .wake-btn {
+      background: rgba(139, 92, 246, 0.15);
+      color: #C084FC;
+      border: 1px solid rgba(139, 92, 246, 0.4);
+    }
+    .wake-btn.active {
+      background: #8B5CF6;
+      color: #FFFFFF;
+      box-shadow: 0 0 14px rgba(139, 92, 246, 0.8);
+      animation: pulseGlow 2s infinite;
+    }
+
+    .dock-icon-btn {
+      background: #1E293B;
+      border: 2px solid #38BDF8;
+      color: #38BDF8;
+      font-size: 1.3rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+      transition: transform 0.15s, background 0.15s;
+      outline: none;
+    }
+    .dock-icon-btn:active { transform: scale(0.92); }
+
+    /* ── Weather & Quick Status Widget ── */
+    .status-widget {
+      margin: 10px 16px 2px;
+      padding: 10px 14px;
+      background: rgba(30, 41, 59, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .weather-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #E2E8F0;
+      font-weight: 600;
+    }
+
+    /* ── Main Chat Stream Area ── */
+    .chat-stream {
+      flex: 1;
+      padding: 14px 16px 120px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scroll-behavior: smooth;
+    }
+    .chat-stream::-webkit-scrollbar { width: 4px; }
+    .chat-stream::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+    .bubble {
+      max-width: 88%;
+      padding: 14px 18px;
+      border-radius: 22px;
+      font-size: var(--font-scale);
+      line-height: 1.5;
+      word-break: break-word;
+      animation: popIn 0.25s ease-out;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .bubble.bujji {
+      background-color: var(--bubble-bujji);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      align-self: flex-start;
+      border-bottom-left-radius: 6px;
+      color: var(--text-white);
+    }
+
+    .bubble.user {
+      background: var(--bubble-user);
+      color: #FFFFFF;
+      align-self: flex-end;
+      border-bottom-right-radius: 6px;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+    }
+
+    .bubble.thinking {
+      opacity: 0.7;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ── Action Cards for Elders ── */
+    .action-card {
+      width: 95%;
+      align-self: flex-start;
+      border-radius: 20px;
+      padding: 18px 20px;
+      animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-top: -4px;
+    }
+
+    .action-card.green {
+      background: linear-gradient(135deg, #064E3B 0%, #065F46 100%);
+      border: 2px solid var(--emerald-green);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2);
+    }
+
+    .action-card.red {
+      background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 100%);
+      border: 2px solid #FCA5A5;
+      box-shadow: 0 8px 24px rgba(239, 68, 68, 0.25);
+    }
+
+    .action-card.amber {
+      background: linear-gradient(135deg, #78350F 0%, #92400E 100%);
+      border: 2px solid var(--amber-yellow);
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.2);
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-desc {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.4;
+      opacity: 0.95;
+    }
+
+    .action-button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px 20px;
+      background: #FACC15;
+      color: #0F172A;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.05rem;
+      min-height: 52px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      transition: transform 0.15s;
+    }
+    .action-button-link:active { transform: scale(0.97); }
+
+    /* ── Quick Chips Slider ── */
+    .chips-slider {
+      display: flex;
+      gap: 8px;
+      padding: 8px 16px 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      position: sticky;
+      bottom: 120px;
+      z-index: 30;
+      background: linear-gradient(to top, rgba(9, 13, 22, 0.98), transparent);
+    }
+    .chips-slider::-webkit-scrollbar { display: none; }
+
+    .chip-item {
+      flex-shrink: 0;
+      white-space: nowrap;
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #E2E8F0;
+      padding: 10px 16px;
+      border-radius: 24px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: background 0.15s, transform 0.1s;
+    }
+    .chip-item:active { transform: scale(0.96); background: rgba(56, 189, 248, 0.2); }
+
+    /* ── Voice Dock & Input ── */
+    .dock-container {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      background: rgba(15, 23, 42, 0.97);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+    }
+
+    .mic-button-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mic-button {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0EA5E9 0%, #6366F1 100%);
+      border: 4px solid #BAE6FD;
+      color: #FFFFFF;
+      font-size: 2.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px var(--primary-glow);
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .mic-button:active { transform: scale(0.92); }
+
+    .mic-button.listening {
+      background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+      border-color: #FECACA;
+      box-shadow: 0 0 38px rgba(239, 68, 68, 0.7);
+      animation: pulseGlow 1.4s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1); box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+      50% { transform: scale(1.08); box-shadow: 0 0 40px rgba(239, 68, 68, 0.85); }
+      100% { transform: scale(1); box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+    }
+
+    .mic-status-text {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .input-row {
+      display: flex;
+      width: 100%;
+      gap: 8px;
+    }
+
+    .text-input-field {
+      flex: 1;
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      color: #FFFFFF;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+    }
+    .text-input-field::placeholder { color: #64748B; }
+
+    .send-action-btn {
+      background: var(--emerald-green);
+      color: #022C22;
+      border: none;
+      border-radius: 16px;
+      padding: 0 20px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      min-height: 48px;
+    }
+
+    /* ── Modals & Drawers ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal-card {
+      background: #1E1B4B;
+      border: 2px solid #38BDF8;
+      border-radius: 26px;
+      padding: 22px;
+      width: 100%;
+      max-width: 440px;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 0 45px rgba(56, 189, 248, 0.35);
+    }
+
+    .modal-card::-webkit-scrollbar { width: 4px; }
+    .modal-card::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .modal-header h2 { font-size: 1.25rem; font-weight: 800; }
+
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin: 12px 0 6px;
+      color: #38BDF8;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .modal-input {
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #FFFFFF;
+      font-size: 0.88rem;
+      font-family: inherit;
+      outline: none;
+      width: 100%;
+    }
+    .modal-input:focus { border-color: #38BDF8; }
+
+    .contact-card-item {
+      background: #0F172A;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .contact-card-info h4 { font-size: 0.98rem; font-weight: 700; color: #F8FAFC; }
+    .contact-card-info p { font-size: 0.82rem; color: #94A3B8; margin-top: 2px; }
+    .contact-card-phone { font-size: 0.85rem; color: #34D399; font-weight: 700; margin-top: 4px; }
+
+    .btn-small {
+      border: none;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .sos-action-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-container">
+    
+    <!-- ── App Top Header ── -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="brand-avatar">🎙️</div>
+        <div class="brand-titles">
+          <h1>Bujji</h1>
+          <p>Voice AI Companion</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <button id="wakeToggleBtn" class="pill-btn wake-btn" onclick="toggleWakeWord()">🎙️ Wake: OFF</button>
+        <button id="langToggleBtn" class="pill-btn lang-btn" onclick="toggleLanguage()">🌐 Tanglish</button>
+        <button class="pill-btn contacts-btn" onclick="openContactsModal()">📇 Contacts</button>
+        <button class="pill-btn sos-btn" onclick="openSOSModal()">🆘 SOS</button>
+      </div>
+    </header>
+
+    <!-- ── Live Status & Weather Widget ── -->
+    <div class="status-widget">
+      <div class="weather-info" id="weatherDisplay">
+        <span>🌤️ Hyderabad: 29°C Warm</span>
+      </div>
+      <button class="pill-btn" style="background:transparent;color:#94A3B8;padding:4px 8px;" onclick="resetChat()" title="Start New Conversation">🔄 Reset</button>
+    </div>
+
+    <!-- ── Main Chat Bubble Stream ── -->
+    <main class="chat-stream" id="chatStream">
+      <div class="bubble bujji">
+        Namaste! 🙏 Nenu <b>Bujji</b>.<br/>
+        Don't worry about typing or menus. Just tap the <b>big blue mic</b> and tell me what you need!
+      </div>
+    </main>
+
+    <!-- ── Elder Quick Action Chips ── -->
+    <div class="chips-slider">
+      <button class="chip-item" onclick="quickSend('Call Amma')">📞 Call Amma</button>
+      <button class="chip-item" onclick="quickSend('Bujji, Vijay ki WhatsApp message pettu')">💬 WhatsApp Vijay</button>
+      <button class="chip-item" onclick="quickSend('Remind me to take BP tablet at 8 PM')">💊 BP Pill Alarm</button>
+      <button class="chip-item" onclick="quickSend('Book doctor appointment for Friday at 10 AM in Google Calendar')">📅 Google Cal</button>
+      <button class="chip-item" onclick="quickSend('Eeroju news cheppu')">📰 Daily News</button>
+      <button class="chip-item" onclick="quickSend('GPay lo money ela transfer cheyyali?')">💳 Safe UPI</button>
+      <button class="chip-item" onclick="quickSend('Eeroju weather ela undhi?')">🌦️ Weather</button>
+      <button class="chip-item" style="border-color:#FCA5A5;color:#FCA5A5;" onclick="quickSend('Urgent! Your SBI account will block today. Share OTP 482910 now: http://bit.ly')">🛡️ Test Scam</button>
+    </div>
+
+    <!-- ── Voice Dock & Text Input ── -->
+    <footer class="dock-container">
+      <div class="mic-button-wrapper" style="display:flex;align-items:center;justify-content:center;gap:14px;">
+        <button type="button" class="dock-icon-btn" onclick="triggerCameraCapture()" title="📸 Scan Medicine Package or Strip">📸</button>
+        <button type="button" class="mic-button" id="micBtn" onclick="toggleMic()" aria-label="Microphone">🎙️</button>
+        <button type="button" class="dock-icon-btn" style="border-color:#F59E0B;color:#F59E0B;" onclick="openAlarmsModal()" title="💊 Daily Pill Alarms">💊</button>
+      </div>
+      <input type="file" id="medicineCamInput" accept="image/*" capture="environment" style="display:none;" onchange="handleMedicinePhoto(this)" />
+      <div class="mic-status-text" id="micLabel">Tap big mic &amp; speak naturally</div>
+
+      <div class="input-row">
+        <input type="text" id="textInput" class="text-input-field" placeholder="Or type / paste SMS here…" onkeydown="if(event.key==='Enter') sendText()" />
+        <button class="send-action-btn" onclick="sendText()">Send</button>
+      </div>
+    </footer>
+
+    <!-- ── Emergency SOS Modal Popup ── -->
+    <div class="modal-overlay" id="sosModal" onclick="if(event.target===this) closeSOSModal()">
+      <div class="modal-card" style="border-color:#EF4444;text-align:center;">
+        <h2 style="font-size:1.4rem;color:#FCA5A5;margin-bottom:8px;">🆘 Emergency SOS</h2>
+        <p style="font-size:0.95rem;color:#E2E8F0;margin-bottom:20px;">One tap to call emergency contacts directly.</p>
+        <a id="sosDaughterBtn" class="sos-action-btn" style="background:#DC2626;" href="tel:+919848022222">📞 Call Emergency Contact</a>
+        <a class="sos-action-btn" style="background:#B91C1C;" href="tel:108">🚑 Call Ambulance (108)</a>
+        <a class="sos-action-btn" style="background:#1E293B;border:1px solid #64748B;" href="tel:112">👮 Call Police (112)</a>
+        <button class="pill-btn" style="width:100%;justify-content:center;margin-top:8px;background:#334155;color:#fff;" onclick="closeSOSModal()">Close</button>
+      </div>
+    </div>
+
+    <!-- ── Fullscreen Interactive Pill Alarm Triggered Modal ── -->
+    <div class="modal-overlay" id="pillAlarmModal" style="background:rgba(15,23,42,0.96);">
+      <div class="modal-card" style="border-color:#F59E0B;text-align:center;box-shadow:0 0 50px rgba(245,158,11,0.6);">
+        <div style="font-size:3.5rem;margin-bottom:8px;animation:pulseGlow 1.2s infinite;">💊</div>
+        <h2 style="font-size:1.6rem;color:#FDE68A;margin-bottom:6px;">Time for Your Tablet!</h2>
+        <div id="alarmMedName" style="font-size:1.35rem;font-weight:800;color:#FFFFFF;margin-bottom:12px;">BP Tablet</div>
+        <p style="font-size:1rem;color:#E2E8F0;margin-bottom:24px;">
+          Nanna garu, please drink water and take your tablet now.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <button type="button" class="btn-small" style="background:#10B981;color:#022C22;padding:16px;font-size:1.15rem;font-weight:800;border-radius:16px;" onclick="dismissPillAlarm(true)">
+            ✅ I Took My Tablet
+          </button>
+          <button type="button" class="btn-small" style="background:#334155;color:#FDE68A;padding:14px;font-size:1rem;font-weight:700;border-radius:16px;" onclick="snoozePillAlarm(10)">
+            ⏰ Snooze 10 Mins
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Daily Pill Alarms Schedule Modal ── -->
+    <div class="modal-overlay" id="alarmsListModal" onclick="if(event.target===this) closeAlarmsModal()">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2>💊 Daily Pill Alarms</h2>
+          <button type="button" class="btn-small" style="background:#334155;color:#fff;" onclick="closeAlarmsModal()">✕</button>
+        </div>
+        <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:12px;">
+          Active medicine alarms set by voice or medicine scanner.
+        </p>
+        <div id="alarmsDisplayList" style="max-height:260px;overflow-y:auto;margin-bottom:12px;">
+          <!-- Dynamically populated -->
+        </div>
+        <div style="font-size:0.85rem;font-weight:700;color:#F59E0B;margin-bottom:6px;">➕ Add Quick Alarm:</div>
+        <div style="display:flex;gap:6px;">
+          <input type="text" id="newAlarmName" class="modal-input" placeholder="Medicine (e.g. Sugar Tablet)" style="flex:1;" />
+          <input type="text" id="newAlarmTime" class="modal-input" placeholder="e.g. 09:00 AM" style="width:115px;" />
+          <button type="button" class="btn-small" style="background:#10B981;color:#022C22;font-weight:800;padding:0 14px;" onclick="addNewManualAlarm()">➕ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── My Contacts & Profile Management Modal ── -->
+    <div class="modal-overlay" id="contactsModal" onclick="if(event.target===this) closeContactsModal()">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2>📇 My Contacts &amp; Details</h2>
+          <button class="btn-small" style="background:#334155;color:#fff;" onclick="closeContactsModal()">✕</button>
+        </div>
+        <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:12px;">
+          Set your real family contacts so Bujji dials and WhatsApps the right people. Dummy numbers are blocked.
+        </p>
+
+        <!-- Sync & Import Methods -->
+        <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
+          <button type="button" class="btn-small" style="background:linear-gradient(135deg, #0284C7, #2563EB);color:white;flex:1;min-width:130px;padding:11px 8px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:4px;" onclick="pickFromPhoneContacts()">
+            📱 Phone Sync
+          </button>
+          <label class="btn-small" style="background:#334155;color:#fff;flex:1;min-width:110px;display:flex;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:11px 8px;font-weight:700;">
+            📥 Import .VCF
+            <input type="file" id="vcfInput" accept=".vcf,.csv,.txt" style="display:none;" onchange="uploadVcfFile(this)" />
+          </label>
+          <button type="button" class="btn-small" style="background:#1E293B;border:1px solid #475569;color:#38BDF8;flex:1;min-width:110px;padding:11px 8px;font-weight:700;" onclick="toggleBulkBox()">
+            📋 Quick Paste
+          </button>
+        </div>
+
+        <!-- Quick Paste Box (Hidden by default) -->
+        <div id="bulkPasteBox" style="display:none;background:#0F172A;border:1px solid #38BDF8;border-radius:14px;padding:12px;margin-bottom:14px;">
+          <div style="font-size:0.85rem;font-weight:700;color:#38BDF8;margin-bottom:6px;">📋 Paste Multiple Contacts (Any Format):</div>
+          <p style="font-size:0.75rem;color:#94A3B8;margin-bottom:8px;">
+            e.g.:<br/>
+            Vijay: 9849012345<br/>
+            Amma - 9849054321<br/>
+            Dr Sharma 9876543210
+          </p>
+          <textarea id="bulkPasteText" class="modal-input" style="height:90px;resize:vertical;font-size:0.85rem;" placeholder="Paste contact list here..."></textarea>
+          <div style="display:flex;gap:6px;margin-top:8px;">
+            <button type="button" class="btn-small" style="background:#10B981;color:#022C22;flex:1;padding:9px;font-weight:800;" onclick="saveBulkContacts()">Parse &amp; Import All</button>
+            <button type="button" class="btn-small" style="background:#334155;color:#fff;padding:9px 14px;" onclick="toggleBulkBox()">Cancel</button>
+          </div>
+        </div>
+
+        <!-- User Profile -->
+        <div class="section-title">👤 Your Profile Details:</div>
+        <div class="form-grid">
+          <input type="text" id="profUserName" class="modal-input" placeholder="Your Name" />
+          <input type="text" id="profCity" class="modal-input" placeholder="Your City" />
+        </div>
+        <div style="margin-bottom:12px;">
+          <input type="text" id="profEmergency" class="modal-input" placeholder="Emergency Phone (e.g. +919876543210)" />
+        </div>
+
+        <!-- Add Contact Form -->
+        <div class="section-title">➕ Add / Update Single Contact:</div>
+        <div class="form-grid">
+          <input type="text" id="contactNameInput" class="modal-input" placeholder="Name (e.g. Vijay)" />
+          <input type="text" id="contactPhoneInput" class="modal-input" placeholder="Phone (+91 or 10 digits)" />
+        </div>
+        <div class="form-grid">
+          <input type="text" id="contactRelInput" class="modal-input" placeholder="Relation (e.g. Brother)" />
+          <input type="text" id="contactAliasInput" class="modal-input" placeholder="Nicknames (vijju, anna)" />
+        </div>
+        <div style="display:flex;gap:8px;margin-top:6px;margin-bottom:14px;">
+          <button type="button" class="btn-small" style="background:#10B981;color:#022C22;flex:1;padding:11px;font-weight:800;" onclick="addOrUpdateContact()">➕ Save Contact to List</button>
+        </div>
+
+        <!-- Contact List Display -->
+        <div class="section-title">📞 Saved Family Contacts:</div>
+        <div id="contactsDisplayList">
+          <!-- Dynamically populated -->
+        </div>
+
+        <button class="btn-small" style="width:100%;margin-top:14px;background:#0EA5E9;color:white;padding:12px;font-size:0.95rem;font-weight:800;" onclick="saveUserDataToServer()">
+          💾 Save &amp; Sync With Bujji
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // ═════════════════════════════════════════════════════════════════════════
+    //  BUJJI CLIENT LOGIC - Session 1 & Contacts Sync
+    // ═════════════════════════════════════════════════════════════════════════
+
+    let currentLang = 'en-IN'; // 'en-IN' for Tanglish/English, 'te-IN' for Telugu
+    let isListening = false;
+    let micDebounce = false;
+    let currentEditingId = null;
+
+    let appUserData = {
+      profile: {
+        user_name: "Nanna Garu",
+        city: "Hyderabad",
+        emergency_contact: "+919848022222"
+      },
+      contacts: []
+    };
+
+    // ── Register PWA Service Worker ──────────────────────────────────────────
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(e => console.log('SW error:', e));
+      });
+    }
+
+    // ── Load User Profile & Real Contacts ────────────────────────────────────
+    async function fetchUserData() {
+      try {
+        const res = await fetch('/api/user_data');
+        if (res.ok) {
+          appUserData = await res.json();
+          renderContactsList();
+          updateHeaderProfile();
+        }
+      } catch (e) {
+        console.warn('Failed to load user data:', e);
+      }
+    }
+    fetchUserData();
+
+    function updateHeaderProfile() {
+      const prof = appUserData.profile || {};
+      if (prof.emergency_contact) {
+        const btn = document.getElementById('sosDaughterBtn');
+        if (btn) btn.href = `tel:${prof.emergency_contact}`;
+      }
+      document.getElementById('profUserName').value = prof.user_name || '';
+      document.getElementById('profCity').value = prof.city || '';
+      document.getElementById('profEmergency').value = prof.emergency_contact || '';
+    }
+
+    function renderContactsList() {
+      const container = document.getElementById('contactsDisplayList');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const contacts = appUserData.contacts || [];
+      if (contacts.length === 0) {
+        container.innerHTML = '<div style="color:#94A3B8;font-size:0.85rem;padding:8px 0;">No contacts added yet. Use "📥 Import .VCF" or "📋 Quick Paste" above!</div>';
+        return;
+      }
+
+      contacts.forEach(c => {
+        const item = document.createElement('div');
+        item.className = 'contact-card-item';
+        const hasPhone = Boolean(c.phone && c.phone.trim());
+        const phoneHtml = hasPhone
+          ? `<div class="contact-card-phone">📞 ${c.phone}</div>`
+          : `<div class="contact-card-phone" style="color:#F59E0B;font-weight:700;">⚠️ No phone number saved</div>`;
+
+        item.innerHTML = `
+          <div class="contact-card-info" style="flex:1;">
+            <h4>${c.name} <span style="font-size:0.75rem;color:#38BDF8;font-weight:600;">(${c.relation || 'Contact'})</span></h4>
+            <p style="font-size:0.75rem;">Aliases: ${(c.aliases || []).join(', ') || 'None'}</p>
+            ${phoneHtml}
+          </div>
+          <div style="display:flex;gap:6px;align-items:center;">
+            <button type="button" class="btn-small" style="background:#334155;color:#E2E8F0;" onclick="editContact('${c.id}')" title="Edit">✏️</button>
+            <button type="button" class="btn-small" style="background:#7F1D1D;color:#FECACA;" onclick="deleteContact('${c.id}')" title="Delete">🗑️</button>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function editContact(id) {
+      const c = (appUserData.contacts || []).find(item => item.id === id);
+      if (!c) return;
+      currentEditingId = id;
+      document.getElementById('contactNameInput').value = c.name;
+      document.getElementById('contactPhoneInput').value = c.phone || '';
+      document.getElementById('contactRelInput').value = c.relation || '';
+      document.getElementById('contactAliasInput').value = (c.aliases || []).join(', ');
+      document.getElementById('contactNameInput').focus();
+    }
+
+    function deleteContact(id) {
+      appUserData.contacts = (appUserData.contacts || []).filter(c => c.id !== id);
+      renderContactsList();
+    }
+
+    function addOrUpdateContact() {
+      const name = document.getElementById('contactNameInput').value.trim();
+      let phone = document.getElementById('contactPhoneInput').value.trim().replace(/\s+/g, '');
+      const relation = document.getElementById('contactRelInput').value.trim() || 'Family';
+      const aliasStr = document.getElementById('contactAliasInput').value.trim();
+
+      if (!name) {
+        alert('Please enter at least a Name.');
+        return;
+      }
+
+      if (phone && !phone.startsWith('+')) {
+        if (phone.length === 10) phone = '+91' + phone;
+        else if (phone.length === 12 && phone.startsWith('91')) phone = '+' + phone;
+      }
+
+      const aliases = aliasStr.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+      if (!aliases.includes(name.toLowerCase())) aliases.push(name.toLowerCase());
+
+      if (currentEditingId) {
+        const c = appUserData.contacts.find(item => item.id === currentEditingId);
+        if (c) {
+          c.name = name;
+          c.phone = phone;
+          c.relation = relation;
+          c.aliases = aliases;
+        }
+        currentEditingId = null;
+      } else {
+        const newContact = {
+          id: 'c_' + Date.now(),
+          name: name,
+          relation: relation,
+          phone: phone,
+          aliases: aliases
+        };
+        appUserData.contacts.push(newContact);
+      }
+
+      document.getElementById('contactNameInput').value = '';
+      document.getElementById('contactPhoneInput').value = '';
+      document.getElementById('contactRelInput').value = '';
+      document.getElementById('contactAliasInput').value = '';
+
+      renderContactsList();
+    }
+
+    function toggleBulkBox() {
+      const box = document.getElementById('bulkPasteBox');
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+
+    async function saveBulkContacts() {
+      const text = document.getElementById('bulkPasteText').value.trim();
+      if (!text) {
+        alert('Please paste some contacts text first.');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/contacts/import_bulk', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          alert(`✅ Successfully imported ${data.count} contacts! Total: ${data.total_contacts}`);
+          document.getElementById('bulkPasteText').value = '';
+          toggleBulkBox();
+          fetchUserData();
+        } else {
+          alert('Could not parse any contacts from that text.');
+        }
+      } catch (err) {
+        console.error('Bulk import error:', err);
+        alert('Error connecting to server.');
+      }
+    }
+
+    async function pickFromPhoneContacts() {
+      if ('contacts' in navigator && 'ContactsManager' in window) {
+        try {
+          const props = ['name', 'tel'];
+          const opts = { multiple: true };
+          const selected = await navigator.contacts.select(props, opts);
+          if (selected && selected.length > 0) {
+            let addedCount = 0;
+            selected.forEach(c => {
+              const name = (c.name && c.name[0]) ? c.name[0].trim() : '';
+              let tel = (c.tel && c.tel[0]) ? c.tel[0].trim().replace(/\s+/g, '') : '';
+              if (name && tel) {
+                if (!tel.startsWith('+')) {
+                  if (tel.length === 10) tel = '+91' + tel;
+                  else if (tel.length === 12 && tel.startsWith('91')) tel = '+' + tel;
+                }
+                appUserData.contacts.push({
+                  id: 'c_' + Date.now() + Math.random().toString(36).substr(2, 4),
+                  name: name,
+                  relation: 'Phone Contact',
+                  phone: tel,
+                  aliases: [name.toLowerCase()]
+                });
+                addedCount++;
+              }
+            });
+            if (addedCount > 0) {
+              await saveUserDataToServer(false);
+              renderContactsList();
+              alert(`✅ Successfully synced ${addedCount} contact(s) from your phone!`);
+            }
+          }
+        } catch (ex) {
+          console.warn('Contact picker exception:', ex);
+        }
+      } else {
+        alert('📱 Phone Sync via browser requires HTTPS. For instant sync:\n\n1. Use "📥 Import .VCF" (Export from your phone\'s Contacts app -> Fix & Manage -> Export to file).\n2. Or tap "📋 Quick Paste" to copy-paste contacts!\n3. When we build the native Android APK in Session 3, it will sync 100% automatically!');
+      }
+    }
+
+    async function saveUserDataToServer(showAlert = true) {
+      appUserData.profile = {
+        user_name: document.getElementById('profUserName').value.trim() || "Nanna Garu",
+        city: document.getElementById('profCity').value.trim() || "Hyderabad",
+        emergency_contact: document.getElementById('profEmergency').value.trim() || ""
+      };
+
+      try {
+        const res = await fetch('/api/user_data', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(appUserData)
+        });
+        if (res.ok) {
+          if (showAlert) alert('✅ Contacts and profile saved! Bujji will now use these real phone numbers.');
+          closeContactsModal();
+          updateHeaderProfile();
+          loadWeather();
+        } else {
+          if (showAlert) alert('Failed to save contacts to server.');
+        }
+      } catch (err) {
+        console.error('Save error:', err);
+        if (showAlert) alert('Connection error while saving contacts.');
+      }
+    }
+
+    async function uploadVcfFile(input) {
+      if (!input.files || input.files.length === 0) return;
+      const file = input.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const res = await fetch('/api/contacts/import_vcf', {
+          method: 'POST',
+          body: formData
+        });
+        if (res.ok) {
+          const data = await res.json();
+          alert(`✅ Imported ${data.count} contacts from your file!`);
+          fetchUserData();
+        } else {
+          alert('Could not parse contacts from this file.');
+        }
+      } catch (err) {
+        console.error('Import error:', err);
+        alert('Error uploading VCF file.');
+      }
+      input.value = '';
+    }
+
+    // ── Fetch Live Weather on Load ───────────────────────────────────────────
+    async function loadWeather() {
+      try {
+        const city = (appUserData.profile && appUserData.profile.city) ? appUserData.profile.city : 'Hyderabad';
+        const res = await fetch(`/weather?city=${encodeURIComponent(city)}`);
+        if (res.ok) {
+          const d = await res.json();
+          document.getElementById('weatherDisplay').innerHTML = `<span>🌤️ ${d.city}: ${d.temperature} ${d.condition}</span>`;
+        }
+      } catch (e) {
+        console.warn('Weather fetch warning:', e);
+      }
+    }
+    loadWeather();
+
+    // ── Language Toggle (Tanglish ↔ Telugu) ──────────────────────────────────
+    function toggleLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      const micLabel = document.getElementById('micLabel');
+
+      if (currentLang === 'en-IN') {
+        currentLang = 'te-IN';
+        btn.innerText = "🌐 తెలుగు";
+        micLabel.innerText = "మైక్ నొక్కి తెలుగులో మాట్లాడండి";
+      } else {
+        currentLang = 'en-IN';
+        btn.innerText = "🌐 Tanglish";
+        micLabel.innerText = "Tap big mic & speak naturally";
+      }
+
+      if (recognitionInstance) {
+        recognitionInstance.lang = currentLang;
+      }
+    }
+
+    // ── Web Audio Feedback Chimes (100% Offline) ─────────────────────────────
+    let audioContext = null;
+    function getAudioCtx() {
+      if (!audioContext) {
+        try { audioContext = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+      }
+      return audioContext;
+    }
+
+    function playTone(type) {
+      const ctx = getAudioCtx();
+      if (!ctx) return;
+      if (ctx.state === 'suspended') ctx.resume();
+      const t = ctx.currentTime;
+
+      if (type === 'start') {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.frequency.setValueAtTime(440, t);
+        osc.frequency.linearRampToValueAtTime(659.25, t + 0.15);
+        gain.gain.setValueAtTime(0.12, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+        osc.start(t); osc.stop(t + 0.3);
+      } else if (type === 'send') {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.frequency.setValueAtTime(523.25, t);
+        gain.gain.setValueAtTime(0.08, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+        osc.start(t); osc.stop(t + 0.12);
+      } else if (type === 'receive') {
+        const osc1 = ctx.createOscillator();
+        const osc2 = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc1.connect(gain); osc2.connect(gain); gain.connect(ctx.destination);
+        osc1.frequency.setValueAtTime(587.33, t);
+        osc2.frequency.setValueAtTime(880, t + 0.1);
+        gain.gain.setValueAtTime(0.09, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.35);
+        osc1.start(t); osc1.stop(t + 0.2);
+        osc2.start(t + 0.1); osc2.stop(t + 0.35);
+      }
+    }
+
+    // ── Resilient Speech Recognition & Wake Word ────────────────────────────
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognitionInstance = null;
+    let wakeWordEnabled = false;
+
+    function toggleWakeWord() {
+      wakeWordEnabled = !wakeWordEnabled;
+      const btn = document.getElementById('wakeToggleBtn');
+      if (wakeWordEnabled) {
+        btn.innerText = "🎙️ Wake: ON";
+        btn.classList.add('active');
+        showBanner("🎙️ Hands-Free Mode Active! Say 'Hey Bujji' anytime to speak.");
+        speakText("Hands-free mode active. Just say Hey Bujji!");
+        startPassiveListening();
+      } else {
+        btn.innerText = "🎙️ Wake: OFF";
+        btn.classList.remove('active');
+        stopMic();
+      }
+    }
+
+    function startPassiveListening() {
+      if (!SpeechRecognition) return;
+      if (!recognitionInstance) recognitionInstance = initRecognition();
+      if (!isListening) {
+        try { recognitionInstance.start(); } catch(e) {}
+      }
+    }
+
+    function initRecognition() {
+      if (!SpeechRecognition) return null;
+      const recog = new SpeechRecognition();
+      recog.lang = currentLang;
+      recog.interimResults = false;
+      recog.maxAlternatives = 1;
+      recog.continuous = false;
+
+      recog.onstart = () => {
+        isListening = true;
+        micDebounce = false;
+        playTone('start');
+        document.getElementById('micBtn').classList.add('listening');
+        document.getElementById('micLabel').innerText = currentLang === 'te-IN'
+          ? "వింటున్నాను... మాట్లాడండి"
+          : "Listening… Speak now";
+      };
+
+      recog.onresult = (event) => {
+        const transcript = (event.results[0][0].transcript || '').trim();
+        if (!transcript) return;
+
+        if (wakeWordEnabled) {
+          const lower = transcript.toLowerCase();
+          if (lower.includes('bujji') || lower.includes('hey bujji')) {
+            playTone('start');
+            const clean = transcript.replace(/^(?:hey\s+)?bujji\s*,?\s*/i, '').trim();
+            if (clean) {
+              addBubble(clean, 'user');
+              sendToBujji(clean);
+            } else {
+              speakText("Namaste! Cheppandi, vinnanu.");
+              document.getElementById('micLabel').innerText = "Vinnanu... cheppandi!";
+            }
+            return;
+          }
+        }
+
+        addBubble(transcript, 'user');
+        sendToBujji(transcript);
+      };
+
+      recog.onerror = (event) => {
+        console.warn('Speech recognition warning:', event.error);
+        stopMic();
+        if (event.error === 'not-allowed') {
+          showBanner('🎤 Mic blocked. Tap the 🔒 icon in address bar → Allow Microphone → Reload.');
+        } else if (event.error !== 'no-speech' && event.error !== 'aborted') {
+          showBanner('Mic notice: ' + event.error);
+        }
+      };
+
+      recog.onend = () => {
+        stopMic();
+        recognitionInstance = initRecognition();
+        if (wakeWordEnabled) {
+          setTimeout(startPassiveListening, 500);
+        }
+      };
+
+      return recog;
+    }
+
+    recognitionInstance = initRecognition();
+
+    function stopMic() {
+      isListening = false;
+      micDebounce = true;
+      document.getElementById('micBtn').classList.remove('listening');
+      document.getElementById('micLabel').innerText = currentLang === 'te-IN'
+        ? "మైక్ నొక్కి తెలుగులో మాట్లాడండి"
+        : "Tap big mic & speak naturally";
+      setTimeout(() => { micDebounce = false; }, 350);
+    }
+
+    function toggleMic() {
+      if (!SpeechRecognition) {
+        showBanner('🎤 Live voice input works best in Google Chrome or Microsoft Edge.');
+        return;
+      }
+      if (micDebounce) return;
+
+      if (isListening) {
+        try { recognitionInstance && recognitionInstance.stop(); } catch(e) {}
+      } else {
+        if (!recognitionInstance) recognitionInstance = initRecognition();
+        recognitionInstance.lang = currentLang;
+        try {
+          recognitionInstance.start();
+        } catch(err) {
+          recognitionInstance = initRecognition();
+          try { recognitionInstance.start(); } catch(e2) { console.warn('Recog retry err:', e2); }
+        }
+      }
+    }
+
+    // ── Chat Bubble & Banner Helpers ─────────────────────────────────────────
+    const chatStream = document.getElementById('chatStream');
+
+    function scrollChatToBottom() {
+      chatStream.scrollTop = chatStream.scrollHeight;
+    }
+
+    function addBubble(text, sender) {
+      const b = document.createElement('div');
+      b.className = `bubble ${sender}`;
+      if (sender === 'user') {
+        b.textContent = text;
+      } else {
+        b.innerHTML = text.replace(/\n/g, '<br>');
+      }
+      chatStream.appendChild(b);
+      scrollChatToBottom();
+      return b;
+    }
+
+    function showBanner(msg) {
+      const b = document.createElement('div');
+      b.className = 'bubble bujji';
+      b.style.borderColor = '#EF4444';
+      b.style.color = '#FCA5A5';
+      b.textContent = msg;
+      chatStream.appendChild(b);
+      scrollChatToBottom();
+    }
+
+    // ── Human-Quality Text-to-Speech (TTS) ───────────────────────────────────
+    function speakText(text) {
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const plain = text.replace(/<[^>]*>/g, '').trim();
+      if (!plain) return;
+
+      const utterance = new SpeechSynthesisUtterance(plain);
+      utterance.lang = currentLang;
+      utterance.rate = 0.94;
+      utterance.pitch = 1.04;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // ── Structured Action Cards Renderer ─────────────────────────────────────
+    function renderActionCard(actionStr) {
+      if (!actionStr || actionStr.trim().toUpperCase() === 'NONE') return;
+
+      const parts = actionStr.split('|').map(s => s.trim());
+      const type = (parts[0] || '').toUpperCase();
+      const param1 = parts[1] || '';
+      const param2 = parts[2] || '';
+
+      const card = document.createElement('div');
+
+      if (type === 'CALL') {
+        const phone = param1;
+        const name = param2 || phone;
+        card.className = 'action-card green';
+        card.innerHTML = `
+          <div class="card-title">📞 Calling ${name}</div>
+          <div class="card-desc">${phone}</div>
+          <a class="action-button-link" href="tel:${phone}">📞 Tap to Call ${name}</a>
+        `;
+      } else if (type === 'WHATSAPP') {
+        const phone = param1;
+        const message = param2;
+        const cleanDigits = phone.replace(/\D/g, '');
+        const waUrl = `https://wa.me/${cleanDigits}?text=${encodeURIComponent(message)}`;
+        card.className = 'action-card green';
+        card.innerHTML = `
+          <div class="card-title">💬 WhatsApp to ${phone}</div>
+          <div class="card-desc">"${message}"</div>
+          <a class="action-button-link" href="${waUrl}" target="_blank" rel="noopener">💬 Open WhatsApp &amp; Send</a>
+        `;
+      } else if (type === 'REMINDER') {
+        const time = param1;
+        const label = param2;
+        card.className = 'action-card amber';
+        card.innerHTML = `
+          <div class="card-title">💊 Reminder Set!</div>
+          <div class="card-desc"><b>${label}</b> at <b>${time}</b></div>
+        `;
+      } else if (type === 'SCAM_ALERT') {
+        const risk = param1;
+        const warning = param2;
+        card.className = 'action-card red';
+        card.innerHTML = `
+          <div class="card-title">🚨 SCAM ALERT — ${risk}</div>
+          <div class="card-desc">${warning}</div>
+          <div style="margin-top:10px;font-size:0.86rem;color:#FECACA;font-weight:600;">
+            ⚠️ Do not share any OTP or click links sent by unknown numbers.
+          </div>
+        `;
+      } else if (type === 'WEATHER') {
+        const city = param1;
+        const condition = param2;
+        card.className = 'action-card green';
+        card.innerHTML = `
+          <div class="card-title">🌤️ Weather for ${city}</div>
+          <div class="card-desc">${condition}</div>
+        `;
+      } else if (type === 'SET_PHONE') {
+        const name = param1;
+        const details = param2 || `Phone number needed for ${name}`;
+        const cardId = 'card_set_phone_' + Math.random().toString(36).substr(2, 6);
+        card.id = cardId;
+        card.className = 'action-card amber';
+        card.innerHTML = `
+          <div class="card-title">⚠️ Phone Number Needed: ${name}</div>
+          <div class="card-desc">${details}</div>
+          <p style="font-size:0.83rem;color:#FDE68A;margin:8px 0 4px;font-weight:600;">
+            Enter ${name}'s real 10-digit mobile number so Bujji never messages unknown strangers:
+          </p>
+          <div style="display:flex;gap:6px;margin-top:8px;">
+            <input type="tel" id="input_${cardId}" class="modal-input" placeholder="e.g. 9849012345" style="flex:1;" />
+            <button type="button" class="btn-small" style="background:#10B981;color:#022C22;font-weight:800;padding:10px 14px;white-space:nowrap;" onclick="quickSavePhone('${name}', 'input_${cardId}', '${cardId}', '${encodeURIComponent(details)}')">Save &amp; Send</button>
+          </div>
+        `;
+      } else if (type === 'CALENDAR') {
+        const title = param1;
+        const time = param2;
+        let gcalUrl = parts[3] || '';
+        if (!gcalUrl.startsWith('http')) {
+          gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&details=${encodeURIComponent('Scheduled via Bujji Voice AI')}&location=Hyderabad`;
+        }
+        card.className = 'action-card green';
+        card.innerHTML = `
+          <div class="card-title">📅 Google Calendar Event</div>
+          <div class="card-desc"><b>${title}</b> scheduled for <b>${time}</b></div>
+          <a class="action-button-link" href="${gcalUrl}" target="_blank" rel="noopener">
+            📅 Add to Google Calendar
+          </a>
+        `;
+      } else if (type === 'PILL_ALARM') {
+        const timeStr = param1;
+        const medName = param2 || "Daily Tablet";
+        registerPillAlarm(medName, timeStr);
+        card.className = 'action-card amber';
+        card.innerHTML = `
+          <div class="card-title">💊 Pill Alarm Active</div>
+          <div class="card-desc"><b>${medName}</b> set for <b>${timeStr}</b> daily</div>
+          <div style="margin-top:10px;font-size:0.86rem;color:#FDE68A;font-weight:600;">
+            🔔 Phone will ring with voice reminder when it's time!
+          </div>
+        `;
+      } else if (type === 'NEWS') {
+        const topic = param1;
+        const headlinesRaw = param2 || "";
+        const items = headlinesRaw.split('~').map(s => s.trim()).filter(Boolean);
+        card.className = 'action-card green';
+        let itemsHtml = items.map(h => `<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:0.92rem;">📰 ${h}</div>`).join('');
+        card.innerHTML = `
+          <div class="card-title">📰 Today's Headlines (${topic})</div>
+          <div class="card-desc" style="margin-top:8px;">${itemsHtml}</div>
+        `;
+      } else if (type === 'UPI_GUIDE') {
+        const appName = param1 || "GPay / PhonePe";
+        card.className = 'action-card green';
+        card.innerHTML = `
+          <div class="card-title">💳 Safe UPI Guide (${appName})</div>
+          <div class="card-desc" style="margin-top:8px;line-height:1.6;">
+            <div style="background:#7F1D1D;padding:8px 12px;border-radius:10px;color:#FECACA;font-weight:700;margin-bottom:8px;">
+              🚨 Never enter your UPI PIN to receive money! PIN is ONLY for sending.
+            </div>
+            1️⃣ Open GPay or PhonePe<br/>
+            2️⃣ Tap <b>"Scan any QR code"</b><br/>
+            3️⃣ Check shopkeeper name on screen<br/>
+            4️⃣ Enter amount &amp; enter PIN only on bank screen
+          </div>
+        `;
+      } else if (type === 'SOS') {
+        const phone = param1;
+        const details = param2;
+        card.className = 'action-card red';
+        card.innerHTML = `
+          <div class="card-title">🆘 Emergency SOS Triggered</div>
+          <div class="card-desc">${details}</div>
+          <a class="action-button-link" style="background:#EF4444;color:white;" href="tel:${phone}">📞 Call Emergency Contact</a>
+        `;
+      } else {
+        return;
+      }
+
+      chatStream.appendChild(card);
+      scrollChatToBottom();
+    }
+
+    async function quickSavePhone(contactName, inputId, cardId, encodedDetails) {
+      const input = document.getElementById(inputId);
+      const phoneVal = input ? input.value.trim() : '';
+      if (!phoneVal) {
+        alert('Please enter a valid mobile number.');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/contacts/quick_phone', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: contactName, phone: phoneVal })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          await fetchUserData();
+
+          const card = document.getElementById(cardId);
+          if (card) {
+            card.className = 'action-card green';
+            card.innerHTML = `
+              <div class="card-title">✅ Saved ${contactName}'s Number!</div>
+              <div class="card-desc">Number: <b>${data.phone}</b></div>
+            `;
+          }
+
+          const details = decodeURIComponent(encodedDetails || '');
+          if (details.includes('WhatsApp:') || details.toLowerCase().includes('message')) {
+            let msg = details.replace(/^WhatsApp:\s*"?/i, '').replace(/"?$/i, '').trim();
+            if (!msg) msg = "Hello";
+            const cleanDigits = data.phone.replace(/\D/g, '');
+            const waUrl = `https://wa.me/${cleanDigits}?text=${encodeURIComponent(msg)}`;
+            const waCard = document.createElement('div');
+            waCard.className = 'action-card green';
+            waCard.innerHTML = `
+              <div class="card-title">💬 WhatsApp Ready for ${contactName}</div>
+              <div class="card-desc">"${msg}"</div>
+              <a class="action-button-link" href="${waUrl}" target="_blank" rel="noopener">💬 Open WhatsApp &amp; Send to ${data.phone}</a>
+            `;
+            chatStream.appendChild(waCard);
+            scrollChatToBottom();
+          } else if (details.toLowerCase().includes('call')) {
+            const callCard = document.createElement('div');
+            callCard.className = 'action-card green';
+            callCard.innerHTML = `
+              <div class="card-title">📞 Ready to Call ${contactName}</div>
+              <div class="card-desc">${data.phone}</div>
+              <a class="action-button-link" href="tel:${data.phone}">📞 Tap to Call ${contactName}</a>
+            `;
+            chatStream.appendChild(callCard);
+            scrollChatToBottom();
+          }
+        } else {
+          alert('Could not save phone number.');
+        }
+      } catch (e) {
+        console.error('Error in quickSavePhone:', e);
+        alert('Connection error while saving phone number.');
+      }
+    }
+
+    // ── Medicine Scanner (Gemini Vision AI) ──────────────────────────────────
+    function triggerCameraCapture() {
+      const input = document.getElementById('medicineCamInput');
+      if (input) input.click();
+    }
+
+    async function handleMedicinePhoto(input) {
+      if (!input.files || input.files.length === 0) return;
+      const file = input.files[0];
+      input.value = '';
+
+      playTone('send');
+      const scanBubble = addBubble("📸 Scanning medicine with Gemini Vision AI... 💊", 'bujji');
+      scanBubble.classList.add('thinking');
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const res = await fetch('/api/medicine/scan', {
+          method: 'POST',
+          body: formData
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        
+        scanBubble.classList.remove('thinking');
+        scanBubble.innerHTML = `
+          <div style="font-weight:800;color:#38BDF8;font-size:1.05rem;margin-bottom:6px;">
+            💊 Medicine Scanned: ${data.medicine_name || 'Detected'}
+          </div>
+          <div><b>🎯 Treats:</b> ${data.purpose || 'Health Maintenance'}</div>
+          <div><b>📋 Dosage:</b> ${data.dosage || 'Take as advised'}</div>
+          <div style="margin-top:4px;color:#FECACA;font-size:0.85rem;"><b>⚠️ Note:</b> ${data.warnings || 'Take with water'}</div>
+        `;
+
+        if (data.spoken_summary) speakText(data.spoken_summary);
+
+        const card = document.createElement('div');
+        card.className = 'action-card green';
+        const medName = data.medicine_name || 'My Medicine';
+        const medTime = data.suggested_time || '09:00 AM';
+        card.innerHTML = `
+          <div class="card-title">⏰ Set Daily Pill Alarm for ${medName}?</div>
+          <div class="card-desc">Suggested time: <b>${medTime}</b></div>
+          <button class="action-button-link" style="border:none;cursor:pointer;" onclick="registerPillAlarm('${medName.replace(/'/g, "\\'")}', '${medTime}'); addBubble('✅ Pill Alarm set for ${medName} at ${medTime}!', 'bujji'); speakText('Meeku ${medName} tablet ki alarm set chesanu.');">
+            ⏰ Add Daily Pill Alarm (${medTime})
+          </button>
+        `;
+        chatStream.appendChild(card);
+        scrollChatToBottom();
+
+      } catch (err) {
+        console.error('Medicine scan error:', err);
+        scanBubble.classList.remove('thinking');
+        scanBubble.textContent = "Could not scan medicine. Please take a clear picture of the medicine strip or bottle in good light.";
+      }
+    }
+
+    // ── Interactive Pill Alarm Ringer System ─────────────────────────────────
+    let pillAlarms = JSON.parse(localStorage.getItem('bujji_pill_alarms') || '[]');
+    let alarmSoundInterval = null;
+
+    function registerPillAlarm(medName, timeStr) {
+      const id = 'alarm_' + Date.now();
+      pillAlarms.push({ id, name: medName, time: timeStr, active: true });
+      localStorage.setItem('bujji_pill_alarms', JSON.stringify(pillAlarms));
+      renderAlarmsList();
+    }
+
+    function checkAlarms() {
+      const now = new Date();
+      let hours = now.getHours();
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const hours12 = hours % 12 || 12;
+      const timeFormatted = `${String(hours12).padStart(2, '0')}:${mins} ${ampm}`;
+      const timeFormattedAlt = `${hours12}:${mins} ${ampm}`;
+
+      pillAlarms.forEach(alarm => {
+        if (!alarm.active) return;
+        const aTime = (alarm.time || '').toUpperCase().trim();
+        if (aTime === timeFormatted || aTime === timeFormattedAlt) {
+          triggerAlarmAlert(alarm);
+        }
+      });
+    }
+
+    setInterval(checkAlarms, 15000);
+
+    function triggerAlarmAlert(alarm) {
+      const modal = document.getElementById('pillAlarmModal');
+      if (modal.classList.contains('active')) return;
+      document.getElementById('alarmMedName').innerText = alarm.name;
+      modal.classList.add('active');
+
+      if ('vibrate' in navigator) navigator.vibrate([600, 300, 600, 300, 600, 300, 600]);
+      speakText(`Nanna garu! Idi mee ${alarm.name} vesukune time andi. Daya chesi water tho tablet vesukondi.`);
+
+      if (alarmSoundInterval) clearInterval(alarmSoundInterval);
+      playAlarmChime();
+      alarmSoundInterval = setInterval(playAlarmChime, 2500);
+    }
+
+    function playAlarmChime() {
+      const ctx = getAudioCtx();
+      if (!ctx) return;
+      if (ctx.state === 'suspended') ctx.resume();
+      const t = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.setValueAtTime(587.33, t);
+      osc.frequency.linearRampToValueAtTime(880, t + 0.25);
+      gain.gain.setValueAtTime(0.18, t);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+      osc.start(t); osc.stop(t + 0.6);
+    }
+
+    function dismissPillAlarm(tookTablet) {
+      if (alarmSoundInterval) clearInterval(alarmSoundInterval);
+      document.getElementById('pillAlarmModal').classList.remove('active');
+      if (tookTablet) {
+        speakText("Manchidi andi! Tablet vesukunnanduku thanks. Take care!");
+        addBubble("✅ Tablet Taken: Logged successfully.", 'bujji');
+      }
+    }
+
+    function snoozePillAlarm(mins) {
+      if (alarmSoundInterval) clearInterval(alarmSoundInterval);
+      document.getElementById('pillAlarmModal').classList.remove('active');
+      speakText(`Sare andi, ${mins} minutes tarvata malli gurthu chestanu.`);
+      setTimeout(() => {
+        triggerAlarmAlert({ name: document.getElementById('alarmMedName').innerText, active: true });
+      }, mins * 60 * 1000);
+    }
+
+    function openAlarmsModal() {
+      document.getElementById('alarmsListModal').classList.add('active');
+      renderAlarmsList();
+    }
+
+    function closeAlarmsModal() {
+      document.getElementById('alarmsListModal').classList.remove('active');
+    }
+
+    function renderAlarmsList() {
+      const list = document.getElementById('alarmsDisplayList');
+      if (!list) return;
+      list.innerHTML = '';
+      if (pillAlarms.length === 0) {
+        list.innerHTML = '<div style="color:#94A3B8;font-size:0.85rem;padding:8px 0;">No alarms set yet. Say "Remind me to take BP tablet at 8 PM" or add below!</div>';
+        return;
+      }
+      pillAlarms.forEach((a, idx) => {
+        const item = document.createElement('div');
+        item.className = 'contact-card-item';
+        item.innerHTML = `
+          <div style="flex:1;">
+            <h4 style="font-size:0.95rem;font-weight:700;color:#F8FAFC;">💊 ${a.name}</h4>
+            <div style="font-size:0.85rem;color:#F59E0B;font-weight:700;margin-top:2px;">⏰ ${a.time}</div>
+          </div>
+          <button type="button" class="btn-small" style="background:#7F1D1D;color:#FECACA;" onclick="deleteAlarm(${idx})">🗑️</button>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function deleteAlarm(idx) {
+      pillAlarms.splice(idx, 1);
+      localStorage.setItem('bujji_pill_alarms', JSON.stringify(pillAlarms));
+      renderAlarmsList();
+    }
+
+    function addNewManualAlarm() {
+      const name = document.getElementById('newAlarmName').value.trim();
+      const time = document.getElementById('newAlarmTime').value.trim();
+      if (!name || !time) {
+        alert('Please enter both Medicine Name and Time.');
+        return;
+      }
+      registerPillAlarm(name, time);
+      document.getElementById('newAlarmName').value = '';
+      document.getElementById('newAlarmTime').value = '';
+      alert(`✅ Alarm set for ${name} at ${time}!`);
+    }
+
+    // ── Main Communication to Bujji Backend ──────────────────────────────────
+    async function sendToBujji(userMessage) {
+      playTone('send');
+      const thinkingBubble = addBubble('Bujji is thinking… 💭', 'bujji');
+      thinkingBubble.classList.add('thinking');
+
+      try {
+        const response = await fetch('/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: userMessage })
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+        let reply = (data.reply || '').trim();
+        let action = (data.action || 'NONE').trim();
+
+        // Safety net in case [ACTION: ...] is inside reply string
+        if (reply.includes('[ACTION:')) {
+          const idx = reply.lastIndexOf('[ACTION:');
+          const tagPart = reply.slice(idx);
+          reply = reply.slice(0, idx).trim();
+          if (action === 'NONE') {
+            const inner = tagPart.replace(/^\[ACTION:\s*/i, '');
+            action = inner.includes(']') ? inner.slice(0, inner.indexOf(']')).trim() : inner.trim();
+          }
+        }
+
+        playTone('receive');
+        thinkingBubble.classList.remove('thinking');
+        thinkingBubble.innerHTML = reply.replace(/\n/g, '<br>');
+
+        speakText(reply);
+        renderActionCard(action);
+
+      } catch (err) {
+        console.error('Bujji chat error:', err);
+        thinkingBubble.classList.remove('thinking');
+        thinkingBubble.style.borderColor = '#EF4444';
+        thinkingBubble.style.color = '#FCA5A5';
+        thinkingBubble.textContent = "Oops! Could not connect to Bujji. Make sure 'python app.py' is running.";
+      }
+    }
+
+    // ── Quick Action Triggers ────────────────────────────────────────────────
+    function quickSend(text) {
+      addBubble(text, 'user');
+      sendToBujji(text);
+    }
+
+    function sendText() {
+      const input = document.getElementById('textInput');
+      const text = input.value.trim();
+      if (!text) return;
+      addBubble(text, 'user');
+      sendToBujji(text);
+      input.value = '';
+    }
+
+    async function resetChat() {
+      try { await fetch('/reset', { method: 'POST' }); } catch(e) {}
+      chatStream.innerHTML = `
+        <div class="bubble bujji">
+          Namaste! 🙏 Nenu <b>Bujji</b>.<br/>
+          Don't worry about typing or menus. Just tap the <b>big blue mic</b> and tell me what you need!
+        </div>
+      `;
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+    }
+
+    // ── Modal Handlers ───────────────────────────────────────────────────────
+    function openSOSModal() {
+      document.getElementById('sosModal').classList.add('active');
+    }
+    function closeSOSModal() {
+      document.getElementById('sosModal').classList.remove('active');
+    }
+
+    function openContactsModal() {
+      document.getElementById('contactsModal').classList.add('active');
+      renderContactsList();
+      updateHeaderProfile();
+    }
+    function closeContactsModal() {
+      document.getElementById('contactsModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
